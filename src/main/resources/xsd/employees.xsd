@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://blumm.com/producing-ws"
+           targetNamespace="http://blumm.com/producing-ws" elementFormDefault="qualified">
+
+    <xs:element name="getEmployeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:employee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="employee">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="designation" type="tns:designation"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="designation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="programmer"/>
+            <xs:enumeration value="analyst"/>
+            <xs:enumeration value="project manager"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
